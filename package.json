@@ -1,5 +1,5 @@
 {
-  "name": "cruder",
+  "name": "crudmaker",
   "version": "1.0.4",
   "description": "make cruds great again",
   "main": "./src/index.js",

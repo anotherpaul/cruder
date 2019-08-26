@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request-promise');
 
-const cruder = require('../src');
+const crudmaker = require('../src');
 
 const myLogger = {
   log: console.log,
@@ -45,7 +45,7 @@ function createEventTypesController({ base, storage, logger }) {
 
 function createEventsController({ base, logger }) {
   async function create(payload) {
-    const eventTypes = cruder.get('eventtypes');
+    const eventTypes = crudmaker.get('eventtypes');
     const existingType = await eventTypes.controller.getById(payload.typeCode);
     if (!existingType) {
       logger.debug(`could not find type: ${payload.typeCode}, creating it`);
@@ -126,9 +126,9 @@ function startApp() {
 
   const dependencies = { mongoose, server, logger: myLogger };
 
-  cruder.create({ resource: devices, dependencies });
-  cruder.create({ resource: eventTypes, dependencies });
-  cruder.create({ resource: events, dependencies });
+  crudmaker.create({ resource: devices, dependencies });
+  crudmaker.create({ resource: eventTypes, dependencies });
+  crudmaker.create({ resource: events, dependencies });
 
   server.listen(8080, async () => {
     const device = await request({

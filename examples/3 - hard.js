@@ -5,7 +5,7 @@ const request = require('request-promise');
 const uuidv4 = require('uuid/v4');
 const { celebrate, Joi } = require('celebrate');
 
-const cruder = require('../src');
+const crudmaker = require('../src');
 
 const logger = {
   log: console.log,
@@ -75,7 +75,7 @@ const things = {
   createValidator,
 };
 
-cruder.create({
+crudmaker.create({
   resource: things,
   dependencies: { mongoose, server, logger },
 });

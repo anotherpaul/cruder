@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const cruder = require('../src');
+const crudmaker = require('../src');
 
 mongoose.connect(`mongodb://localhost:27017/easy`);
 
@@ -10,10 +10,10 @@ const resource = {
   },
 };
 
-cruder.create({ resource, dependencies: { mongoose } });
+crudmaker.create({ resource, dependencies: { mongoose } });
 
 async function startApp() {
-  const things = cruder.get('things');
+  const things = crudmaker.get('things');
   const thing = await things.controller.create({ name: 'a thing' });
   console.log(thing);
   const foundThings = await things.controller.search({ filter: {}, skip: 0, limit: 0 });

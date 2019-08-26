@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request-promise');
 
-const cruder = require('../src');
+const crudmaker = require('../src');
 
 mongoose.connect(`mongodb://localhost:27017/medium`);
 
@@ -19,7 +19,7 @@ function startApp() {
   const server = express();
   server.use(bodyParser.json());
 
-  cruder.create({
+  crudmaker.create({
     resource: things,
     dependencies: { mongoose, server },
   });

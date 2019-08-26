@@ -20,7 +20,7 @@ Pretty fast
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const cruder = require('cruder');
+const crudmaker = require('crudmaker');
 
 const resource = {
   name: 'things',
@@ -34,7 +34,7 @@ const server = express();
 server.use(bodyParser.json());
 mongoose.connect();
 
-cruder.create({ resource, dependencies: { mongoose, server } });
+crudmaker.create({ resource, dependencies: { mongoose, server } });
 server.listen(8080);
 ```
 
@@ -60,7 +60,7 @@ Creates a resource and returns it.
 ```
 const resource = { name: 'things', properties: { name: { type: 'string' } } };
 const dependencies = { mongoose };
-const things = cruder.create({ resource, dependencies });
+const things = crudmaker.create({ resource, dependencies });
 ```
 
 Incoming object contents:
@@ -134,7 +134,7 @@ Returned object contents:
 Returns resource by name.
 
 ```
-const things = cruder.get('things');
+const things = crudmaker.get('things');
 ```
 
 Returned object contents are the same as above.
@@ -144,7 +144,7 @@ Returned object contents are the same as above.
 Returns an object with all resources.
 
 ```
-const resource = cruder.getAll();
+const resource = crudmaker.getAll();
 // resource.things { storage, controller }
 ```
 
