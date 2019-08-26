@@ -1,0 +1,56 @@
+{
+  "name": "cruder",
+  "version": "1.0.4",
+  "description": "make cruds great again",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "celebrate": "^10.0.0",
+    "mongoose-autopopulate": "^0.9.1"
+  },
+  "devDependencies": {
+    "express": "^4.17.0",
+    "body-parser": "^1.19.0",
+    "mongoose": "^5.5.10",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "uuid": "^3.3.2",
+    "eslint": "^4.*.*",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "overrides": [
+      {
+        "files": "*.spec.js",
+        "rules": {
+          "no-unused-expressions": "off"
+        }
+      }
+    ],
+    "rules": {
+      "no-underscore-dangle": 0,
+      "no-await-in-loop": 0,
+      "no-restricted-syntax": 0,
+      "no-use-before-define": [
+        "error",
+        {
+          "functions": false
+        }
+      ]
+    }
+  }
+}
