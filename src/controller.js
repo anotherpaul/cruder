@@ -52,6 +52,10 @@ function createController({ storage, logger, resource }) {
     return { id };
   }
 
+  function getProperties() {
+    return resource.properties;
+  }
+
   return {
     create,
     search,
@@ -59,6 +63,7 @@ function createController({ storage, logger, resource }) {
     getById,
     updateById,
     remove,
+    getProperties,
   };
 }
 

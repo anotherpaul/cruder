@@ -41,6 +41,12 @@ function createResourceRoutes({ controller, validator }) {
       .then(result => res.status(204).json(result))
       .catch(err => res.status(500).send(err.message || err)),
   );
+  router.get('/properties', (req, res) =>
+    controller
+      .getProperties()
+      .then(result => res.status(200).json(result))
+      .catch(err => res.status(500).send(err.message || err)),
+  );
 
   return router;
 }

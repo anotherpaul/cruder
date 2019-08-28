@@ -47,6 +47,7 @@ GET /things/:id
 PUT /things/:id
 POST /things/search { filter: { status: 'aga' }, skip: 1, limit: 0, sort: { property: 'name', direction: 1 } }
 DELETE /things/:id
+GET /things/properties
 ```
 
 For scarier use cases see 'examples' folder
@@ -113,6 +114,7 @@ Returned object contents:
     getById(id),
     updateById(id, payload),
     remove(id),
+    getProperties(),
   },
   storage: { // DB methods
     create(payload),
@@ -198,6 +200,10 @@ properties: {
 }
 ```
 
+## What is the getProperties controller method and GET /properties route?
+
+This method returns the 'properties' field of the resource description and the route returns it in JSON. Use it to generate UI.
+
 ## Can you add your own logic?
 
 To do this you have to provide functions to override the storage, validator or controller methods.
@@ -242,6 +248,8 @@ function createController({ base, storage, logger }) {
   };
 }
 ```
+
+NOTE: you can override `getProperties` method as well, but why would you?
 
 Overriding validator methods:
 
