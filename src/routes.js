@@ -4,7 +4,12 @@ const dummy = (_req, _res, next) => next();
 
 function createResourceRoutes({ controller, validator }) {
   const router = express.Router();
-
+  router.get('/properties', (req, res) =>
+    controller
+      .getProperties()
+      .then(result => res.status(200).json(result))
+      .catch(err => res.status(500).send(err.message || err)),
+  );
   router.post('/', !!validator && !!validator.create ? validator.create : dummy, (req, res) =>
     controller
       .create(req.body)
@@ -39,12 +44,6 @@ function createResourceRoutes({ controller, validator }) {
     controller
       .remove(req.params.id)
       .then(result => res.status(204).json(result))
-      .catch(err => res.status(500).send(err.message || err)),
-  );
-  router.get('/properties', (req, res) =>
-    controller
-      .getProperties()
-      .then(result => res.status(200).json(result))
       .catch(err => res.status(500).send(err.message || err)),
   );
 

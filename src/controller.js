@@ -52,7 +52,7 @@ function createController({ storage, logger, resource }) {
     return { id };
   }
 
-  function getProperties() {
+  async function getProperties() {
     return resource.properties;
   }
 
