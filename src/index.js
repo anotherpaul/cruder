@@ -32,7 +32,7 @@ async function create({ resource, dependencies }) {
 
   const baseController = createDefaultController({ storage, logger, resource });
   const controllerOverrides = resource.createController
-    ? await resource.createController({ base: baseController, storage, logger })
+    ? await resource.createController({ base: baseController, storage, logger, resource })
     : {};
   const controller = { ...baseController, ...controllerOverrides };
 
