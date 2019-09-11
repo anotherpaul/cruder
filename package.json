@@ -1,6 +1,6 @@
 {
   "name": "crudmaker",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "make cruds great again",
   "main": "./src/index.js",
   "scripts": {
